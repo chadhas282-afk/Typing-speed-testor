@@ -6,6 +6,28 @@
     <title>CyberType Express</title>
 </head>
 <body>
-        
+        <div id="startWindow">
+                <div class="modalbox">
+                    <h1 class="glitch">CYBERTYPE</h1>
+                    <p>Initialize terminal sequence. Type to begin.</p>
+                    <button id="startButton">INITIALIZE</button>
+                </div>
+        </div>
+
+        <div id="mainContent">
+            <h1 class="main-title">CyberType</h1>
+        <div id="statsRow">
+            <div class="stat-item">
+                <span class="stat-label">Duration</span>
+                <div class="time-options">
+                    <button class="time-btn" data-time="15">15</button>
+                    <button class="time-btn" data-time="30">30</button>
+                    <button class="time-btn active" data-time="60">60</button>
+                    <div class="custom-time-wrapper">
+                        <input type="number" id="customTimeInput" placeholder="Custom" min="1">
+                        <button id="setCustomTime">Set</button>
+                    </div>
+                </div>
+        </div>
 </body>
 </html>
