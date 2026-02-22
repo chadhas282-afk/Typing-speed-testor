@@ -10,12 +10,11 @@ const restartBtn = document.getElementById("midTestRestart");
 const customTimeInput = document.getElementById("customTimeInput");
 const setCustomBtn = document.getElementById("setCustomTime");
 
-let workBank = []
+let wordBank = []
 let maxtime = 60;
 let remainingTime = 60;
 let timeInterval = null;
 let isStarted = false;
-
 let totalStrokes = 0;
 let mistakeCount = 0;
 
@@ -36,10 +35,10 @@ async function loadWords() {
 }
 
 function generateRandomWords() {
-    if (workBank.length === 0) {
+    if (wordBank.length === 0) {
         let words = [];
         for (let i = 0; i < 120; i++) {
-            WebTransportDatagramDuplexStream.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
+            words.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
         }
         const passage = words.join(" ");
         textDisplay.innerHTML = "";
@@ -85,6 +84,82 @@ function updateStats(e) {
     let timeElapsed = (maxtime - remainingTime) / 60;
     if(timeElapsed > 0.01){
         let correctStrokes = totalStrokes - mistakeCount;
-        let wpm 
+        let wpm = Math.round((correctStrokes / 5) / timeElapsed);
+        wpmEl.innerText = Math.max(0, wpm);
     }
 }
+
+function resetEngine(){
+    clearInterval(timeInterval);
+    timerInterval = null;
+    timeRemaining = maxtime;
+    isStarted = false;
+    totalStrokes = 0;
+    mistakeCount = 0;
+    hiddenInput.value = "";
+    hiddenInput.disabled = false;
+    timerEl.innerHTML = maxtime;
+    wpmEl.innerHTML = 0;
+    accEl.innerHTML = "100";
+    generateRandomWords();
+    hiddenInput.focus();
+}
+
+function startTimer(){
+    timeInterval = setInterval(() => {
+      timeRemaining--;
+      timerEl.innerText = timeRemaining;
+      if(timeRemaining <= 0) endTest();
+    }, 1000);
+}
+
+function endTest(){
+    clearInterval(timeInterval);
+    hiddenInput.disabled = true;
+    document.getElementById("newTestWindow").style.display = "flex";
+   innerHTML = `
+        <h2 style="color:var(--accent); margin-bottom:10px;">SEQUENCE TERMINATED</h2>
+        <div style="font-size:3rem; font-weight:bold;">${wpmEl.innerText} WPM</div>
+        <p style="opacity:0.7">Accuracy: ${accEl.innerText}% | Mistakes: ${mistakeCount}</p>
+    `;
+}
+
+startButton.addEventListener("click", () => {
+    startWindow.style.display = "none";
+    resetEngine();
+});
+
+hiddenInput.addEventListener("input", (e) =>{
+    if (!isStarted && hiddenInput.value.length > 0){
+        isStarted = true;
+        startTimer();
+    }
+    updateStats(e);
+
+    if (hiddenInput.value.length >= textDisplay.innerText.length - 10){
+        generateRandomWords();
+        hiddenInput.value = "";
+    }
+});
+
+timeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if(!isStarted || tuneReamining === maxtime){
+            timeButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+            maxtime = parseInt(button.getAttribute("data-time"));
+            resetEngine();
+        }
+    });
+});
+
+setCustomBtn.addEventListener("click", () => {
+    let val = parseInt(customTimeInput.value);
+    if(val && val > 0){
+        timeButtons.forEach(btn => btn.classList.remove("active"));
+        customTimeInput.value = "";
+        maxtime = val;
+        resetEngine();
+    }
+});
+
