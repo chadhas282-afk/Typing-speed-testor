@@ -64,4 +64,27 @@ function updateStats(e) {
             mistakeCount++;
         }
     }
+    charSpans.forEach((span, index) => {
+    const typedChar = typedValue[index];
+    span.classList.remove("correct", "incorrect", "current");
+
+    if (typedChar == null){
+        if (index == typedValue.length)
+            span.classList.add("current");
+    }else if (typedChar === span.innerText){
+        span.classList.add("correct");
+    }else {
+        span.classList.add("incorrect");
+    }
+    });
+
+    let accuracy = totalStrokes > 0 
+        ? Math.round(((totalStrokes - mistakeCount) / totalStrokes) * 100) : 100;
+    
+    accEl.innerText = Math.max(0, accuracy);
+    let timeElapsed = (maxtime - remainingTime) / 60;
+    if(timeElapsed > 0.01){
+        let correctStrokes = totalStrokes - mistakeCount;
+        let wpm 
+    }
 }
