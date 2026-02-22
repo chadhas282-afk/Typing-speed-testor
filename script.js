@@ -35,7 +35,7 @@ async function loadWords() {
 }
 
 function generateRandomWords() {
-    if (wordBank.length === 0) {
+    if (wordBank.length > 0) {
         let words = [];
         for (let i = 0; i < 120; i++) {
             words.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
@@ -107,9 +107,9 @@ function resetEngine(){
 
 function startTimer(){
     timeInterval = setInterval(() => {
-      timeRemaining--;
-      timerEl.innerText = timeRemaining;
-      if(timeRemaining <= 0) endTest();
+      remainingTime--; 
+      timerEl.innerText = remainingTime;
+      if(remainingTime <= 0) endTest();
     }, 1000);
 }
 
@@ -117,7 +117,7 @@ function endTest(){
     clearInterval(timeInterval);
     hiddenInput.disabled = true;
     document.getElementById("newTestWindow").style.display = "flex";
-   innerHTML = `
+    document.getElementById("finalScore").innerHTML = `
         <h2 style="color:var(--accent); margin-bottom:10px;">SEQUENCE TERMINATED</h2>
         <div style="font-size:3rem; font-weight:bold;">${wpmEl.innerText} WPM</div>
         <p style="opacity:0.7">Accuracy: ${accEl.innerText}% | Mistakes: ${mistakeCount}</p>
@@ -144,7 +144,7 @@ hiddenInput.addEventListener("input", (e) =>{
 
 timeButtons.forEach(button => {
     button.addEventListener("click", () => {
-        if(!isStarted || tuneReamining === maxtime){
+        if(!isStarted || remainingTime === maxtime){
             timeButtons.forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
             maxtime = parseInt(button.getAttribute("data-time"));
