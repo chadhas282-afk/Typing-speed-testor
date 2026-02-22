@@ -7,3 +7,14 @@
 	--text-dim: #64748b;
 	--text-bright: #f8fafc;
 }
+body{
+    background: linear-gradient(circle at top, #1e293b, #0f172a);
+    color: var(--text-bright);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+}
