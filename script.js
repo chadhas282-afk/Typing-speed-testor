@@ -92,7 +92,7 @@ function updateStats(e) {
 function resetEngine(){
     clearInterval(timeInterval);
     timerInterval = null;
-    timeRemaining = maxtime;
+    remainingTime = maxtime;
     isStarted = false;
     totalStrokes = 0;
     mistakeCount = 0;
