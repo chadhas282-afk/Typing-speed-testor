@@ -31,18 +31,39 @@
                     </div>
                 </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Accuracy</span>
-                <span class="stat-value">0%</span>
+             <div class="stat-item">
+                <span class="stat-label">Time</span>
+                <span id="timer" class="stat-value">60</span>
             </div>
+            
             <div class="stat-item">
                 <span class="stat-label">WPM</span>
-                <span class="stat-value">0</span>
+                <span id="wpm" class="stat-value">0</span>
             </div>
+
             <div class="stat-item">
-                <span class="stat-label">CPM</span>
-                <span class="stat-value">0</span>
+                <span class="stat-label">Accuracy</span>
+                <span id="accuracy" class="stat-value">0</span><span class="stat-value-unit">%</span>
             </div>
+
+            <div class="stat-item">
+                <button id="midTestRestart" class="icon-button" title="Restart Test">⟳</button>
+            </div>
+        </div>
+        <div id="typingArea">
+            <div id="textDisplay"></div>
+            <textarea id="hiddenInput" spellcheck="false" autocomplete="off"></textarea>
+        </div>
+    </div>
+
+    <div id="newTestWindow" style="display:none;">
+        <div class="modalBox">
+            <div id="finalScore"></div>
+            <button id="newTestButton">REBOOT TEST</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 
