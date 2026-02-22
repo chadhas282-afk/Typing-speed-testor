@@ -140,3 +140,31 @@ body{
     transform: rotate(180deg);
     box-shadow: 0 0 10px var(--accent);
 }
+
+#typingArea{
+    position: relative;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    min-height: 160px;
+}
+
+#textDisplay{
+    color: var(--text-dim);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#textDisplay span.correct{
+    color: var((--text-bright));
+}
+
+#textDisplay span.incorrect{
+    background: var(--incorrect);
+    color: white;
+    border-radius: 3px;
+}
+
+#textDisplay span.current {
+	border-bottom: 3px solid var(--accent);
+	animation: blink 1s infinite;
+}
