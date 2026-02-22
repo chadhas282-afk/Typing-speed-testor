@@ -78,3 +78,19 @@ body{
     align-items: center;
     margin-top: 5px;
 }
+.time-btn{
+    background-color: transparent;
+   border: 1px solid var(--text-dim);
+	color: var(--text-dim);
+	padding: 4px 10px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.time-btn.active {
+    background-color: var(--accent);
+    color: var(--main-bg);
+    border-color: var(--accent);
+}
+
