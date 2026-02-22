@@ -1,0 +1,9 @@
+:root {
+	--main-bg: #0f172a;
+	--panel-bg: rgba(30, 41, 59, 0.7);
+	--accent: #38bdf8;
+	--correct: #4ade80;
+	--incorrect: #f87171;
+	--text-dim: #64748b;
+	--text-bright: #f8fafc;
+}
