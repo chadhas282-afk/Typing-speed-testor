@@ -1,18 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-
 <head>
+    <title>CyberType Express</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberType Express</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-</head>
-
 <body>
+	
     <div id="startWindow">
-        <div class="modalbox">
+        <div class="modalBox">
             <h1 class="glitch">CYBERTYPE</h1>
             <p>Initialize terminal sequence. Type to begin.</p>
             <button id="startButton">INITIALIZE</button>
@@ -20,7 +18,7 @@
     </div>
 
     <div id="mainContent">
-        <h1 class="main-title">CyberType</h1>
+		<h1 class="main-title">CyberType</h1>
         <div id="statsRow">
             <div class="stat-item">
                 <span class="stat-label">Duration</span>
@@ -34,7 +32,8 @@
                     </div>
                 </div>
             </div>
-             <div class="stat-item">
+
+            <div class="stat-item">
                 <span class="stat-label">Time</span>
                 <span id="timer" class="stat-value">60</span>
             </div>
@@ -53,6 +52,7 @@
                 <button id="midTestRestart" class="icon-button" title="Restart Test">⟳</button>
             </div>
         </div>
+        
         <div id="typingArea">
             <div id="textDisplay"></div>
             <textarea id="hiddenInput" spellcheck="false" autocomplete="off"></textarea>
@@ -67,7 +67,5 @@
     </div>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>
