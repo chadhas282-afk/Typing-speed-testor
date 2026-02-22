@@ -163,3 +163,10 @@ setCustomBtn.addEventListener("click", () => {
     }
 });
 
+restartBtn.addEventListener("click", resetEngine);
+document.getElementById("newTestButton").addEventListener("click", () => {
+    document.getElementById("newTestWindow").style.display = "none";
+    resetEngine();
+});
+
+loadWords();
