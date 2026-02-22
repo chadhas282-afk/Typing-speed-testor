@@ -47,3 +47,34 @@ body{
 	max-width: 950px;
 	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
+#statsRow{
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+	background: rgba(15, 23, 42, 0.5);
+	padding: 20px;
+	border-radius: 15px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+.stat-item {
+	text-align: center;
+}
+
+.stat-label {
+	display: block;
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	color: var(--accent);
+	letter-spacing: 2px;
+}
+.stat-value{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.time-option{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 5px;
+}
